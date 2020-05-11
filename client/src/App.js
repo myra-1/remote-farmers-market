@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import './App.css';
 
 import AccountCreate from './Components/AccountCreate'
+import AccountAccess from './Components/AccountAccess'
+import Header from './Components/Header'
+import Main from './Components/Main'
+
 import {
   loginUser,
   registerUser,
@@ -39,17 +45,19 @@ class App extends Component {
       currentUser: null
     })
     removeToken();
-    this.props.history.push('/');
+    this.props.history.push('/login');
   }
 
   render() {
     return (
       <div className="App">
-        <AccountCreate handleRegister={this.handleRegister} />
-
+        <Header handleLogout={this.handleLogout} currentUser={this.state.currentUser} />
+        <Route path='/login' render={(props) => (<AccountCreate {...props} handleRegister={this.handleRegister} />)} />
+        <Route path='/login' render={(props) => (<AccountAccess {...props} handleLogin={this.handleLogin} />)} />
+        <Route path='/main'> <Main /> </Route>
       </div>
     )
   }
 }
 
-export default App;
+export default withRouter(App);

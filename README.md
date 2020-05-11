@@ -40,12 +40,11 @@ src
 |__ components/
       |__ Header.jsx
       |__ Footer.jsx
-      |__ Post.jsx
-      |__ ContactInfo.jsx
+      |__ Post.jsx (Photo, Description, ContactInfo)
       |__ Login.jsx
       |__ Register.jsx
 |__ services/
-      |__ services-api.jsx (whatever this is called - return)
+      |__ api-helper.js
 
 ```
 

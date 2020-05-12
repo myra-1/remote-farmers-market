@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
   validates :password, length: {minimum: 4}
 
+  has_many :posts
 end
 
 
@@ -17,3 +18,4 @@ def return_data
     created_at: created_at,
     updated_at: updated_at
   }
+end

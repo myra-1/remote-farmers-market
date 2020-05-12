@@ -1,6 +1,6 @@
-<mxfile host="localhost" modified="2020-05-11T14:37:35.662Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.45.0 Chrome/78.0.3904.130 Electron/7.2.4 Safari/537.36" etag="Umid3GSheynzThwPX5co" version="13.0.9">
+<mxfile host="localhost" modified="2020-05-12T15:39:31.466Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.45.0 Chrome/78.0.3904.130 Electron/7.2.4 Safari/537.36" etag="qXaabVBYjTSEu3eDf4TK" version="13.0.9">
     <diagram id="t90tw3hEJwtajVjFZ1cy" name="Page-1">
-        <mxGraphModel dx="728" dy="550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="371" dy="550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -18,7 +18,7 @@
                 <mxCell id="6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;verticalAlign=middle;horizontal=1;endArrow=ERmany;endFill=0;startArrow=ERmany;startFill=0;endSize=11;startSize=11;" parent="1" source="3" target="5" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="&lt;font color=&quot;#000033&quot;&gt;&lt;u&gt;Posts&lt;/u&gt;&lt;br&gt;id&lt;br&gt;poster_id&lt;br&gt;title&lt;br&gt;description&lt;br&gt;img&lt;br&gt;price&lt;br&gt;quantity_per_price&lt;br&gt;preferred_contact_metho&lt;br&gt;created_at&lt;br&gt;update_at&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                <mxCell id="3" value="&lt;font color=&quot;#000033&quot;&gt;&lt;u&gt;Posts&lt;/u&gt;&lt;br&gt;id&lt;br&gt;poster_id (FRK - user_id)&lt;br&gt;title&lt;br&gt;description&lt;br&gt;img_url&lt;br&gt;price&lt;br&gt;quantity&lt;br&gt;contact_info&lt;br&gt;created_at&lt;br&gt;update_at&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="50" y="310" width="170" height="170" as="geometry"/>
                 </mxCell>
                 <mxCell id="5" value="&lt;font color=&quot;#000033&quot;&gt;&lt;u&gt;Tags&lt;/u&gt;&lt;br&gt;id&lt;br&gt;name&lt;br&gt;created_at&lt;br&gt;update_at&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
@@ -43,7 +43,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="12" value="&lt;font color=&quot;#000033&quot;&gt;&lt;u&gt;PostsTags&lt;/u&gt;&lt;br&gt;post_id&lt;br&gt;tag_id&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                <mxCell id="12" value="&lt;font color=&quot;#000033&quot;&gt;&lt;u&gt;PostsTags&lt;/u&gt;&lt;br&gt;post_id&lt;br&gt;tag_id&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="250" y="355" width="80" height="80" as="geometry"/>
                 </mxCell>
             </root>

@@ -13,15 +13,15 @@ const api = axios.create({
 // ========================================
 
 // GET	/posts 
-// WHY DONT I HAVE THIS ROUTE
-// export const getAllPosts = async () => {
-//   const response = await api.get('/posts')
-//   return response.data
-// }
+export const getAllPosts = async () => {
+  const response = await api.get('/posts')
+  return response.data
+}
 
 
 // GET	/posts/:id(.:format)	
 // posts#show
+//NOW I DONT HAVE THIS
 export const getOnePost = async (id) => {
   const response = await api.post(`/posts/${id}`)
   return response.data

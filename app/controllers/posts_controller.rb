@@ -16,9 +16,10 @@ class PostsController < ApplicationController
     render json: @post, include: :tags
   end
 
-  # def show_owner
-  #   render json: @post, include: :tags
-  # end
+  def show_owner
+    @owner = User.find(params[:user_id])
+    render json: @owner.posts, include: :tags
+  end
   
   #POST /posts
   def create

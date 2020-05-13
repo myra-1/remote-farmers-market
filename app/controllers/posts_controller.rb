@@ -15,6 +15,10 @@ class PostsController < ApplicationController
     # ^ DELETE THIS - made unnecessary bc of the find_post before_action
     render json: @post, include: :tags
   end
+
+  # def show_owner
+  #   render json: @post, include: :tags
+  # end
   
   #POST /posts
   def create

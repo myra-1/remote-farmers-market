@@ -6,6 +6,38 @@ const api = axios.create({
   baseURL: baseUrl
 });
 
+
+
+// ========================================
+// ================ POST ==================
+// ========================================
+
+// GET	/posts 
+// WHY DONT I HAVE THIS ROUTE
+// export const getAllPosts = async () => {
+//   const response = await api.get('/posts')
+//   return response.data
+// }
+
+
+// GET	/posts/:id(.:format)	
+// posts#show
+export const getOnePost = async (id) => {
+  const response = await api.post(`/posts/${id}`)
+  return response.data
+}
+
+
+// PATCH	/posts/:id(.:format)	
+// posts#update
+
+// PUT	/posts/:id(.:format)	
+// posts#update
+
+// DELETE	/posts/:id(.:format)
+
+
+
 // ========================================
 // ================ AUTH ==================
 // ========================================

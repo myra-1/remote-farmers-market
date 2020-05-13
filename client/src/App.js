@@ -12,18 +12,28 @@ import {
   loginUser,
   registerUser,
   verifyUser,
-  removeToken
+  removeToken,
+  getOnePost
 } from './Services/api-helper'
+import PostView from './Components/PostView';
 
 class App extends Component {
   state = {
-    currentUser: null
+    currentUser: null,
+    post: []
   }
 
   componentDidMount() {
     this.confirmUser();
   }
 
+  viewPost = async () => {
+    const post = await getOnePost()
+    this.setState({ post })
+  }
+
+
+  //  AUTH BELOW
   handleLogin = async (loginData) => {
     const currentUser = await loginUser(loginData);
     this.setState({ currentUser })
@@ -47,6 +57,7 @@ class App extends Component {
     removeToken();
     this.props.history.push('/login');
   }
+  // END AUTH 
 
   render() {
     return (
@@ -55,6 +66,10 @@ class App extends Component {
         <Route path='/login' render={(props) => (<AccountCreate {...props} handleRegister={this.handleRegister} />)} />
         <Route path='/login' render={(props) => (<AccountAccess {...props} handleLogin={this.handleLogin} />)} />
         <Route path='/main'> <Main /> </Route>
+        <Route exact path='/posts/:id' render={(props) => {
+          const { id } = props.match.params
+          return <PostView postId={id} />
+        }} />
       </div>
     )
   }

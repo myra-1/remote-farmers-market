@@ -20,7 +20,7 @@ class AccountCreate extends Component {
       <form onSubmit={(e) => {
         e.preventDefault();
         this.props.handleRegister(this.state);
-        this.props.history.push('/main');
+        this.props.history.push('/posts');
       }}>
         <h3>Register</h3>
         <label htmlFor="display_name">Name:</label>

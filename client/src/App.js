@@ -14,13 +14,12 @@ import {
   loginUser,
   registerUser,
   verifyUser,
-  removeToken,
+  removeToken
 } from './Services/api-helper'
 
 class App extends Component {
   state = {
     currentUser: null,
-    post: []
   }
 
   componentDidMount() {
@@ -57,11 +56,11 @@ class App extends Component {
     return (
       <div className="App">
         <Header handleLogout={this.handleLogout} currentUser={this.state.currentUser} />
-        <Route path='/login' render={(props) => (<AccountCreate {...props} handleRegister={this.handleRegister} />)} />
+        <Route path='/register' render={(props) => (<AccountCreate {...props} handleRegister={this.handleRegister} />)} />
         <Route path='/login' render={(props) => (<AccountAccess {...props} handleLogin={this.handleLogin} />)} />
-        <Route path='/main'> <Main /> </Route>
-        <Route exact path='/posts' component={PostView} />
-        <Route exact path='/posts/:id' component={PostEdit} />
+        <Route path='/posts'> <Main /> </Route>
+        {/* <Route exact path='/posts' component={PostView} />
+        <Route exact path='/posts/:id' component={PostEdit} /> */}
       </div>
     )
   }

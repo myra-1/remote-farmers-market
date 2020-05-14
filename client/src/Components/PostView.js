@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
+import { Route, Link } from 'react-router-dom'
 import { getOnePost, getAllPosts } from '../Services/api-helper'
+
+import PostEdit from './PostEdit'
+import Main from './Main'
 
 
 class PostView extends Component {
@@ -11,9 +15,9 @@ class PostView extends Component {
     }
   }
   componentDidMount() {
-    this.setPost()
+    this.setPosts()
   }
-  setPost = async () => {
+  setPosts = async () => {
     const posts = await getAllPosts()
     this.setState({ posts })
   }
@@ -22,11 +26,23 @@ class PostView extends Component {
     return (
       <div>
         {posts.map(post => (
-          <div key={post.id}>{post.title}
-            {post.description}</div>
-        ))}
+          <div key={post.id}>
+            {post.title} <br />
+            {post.description}
+            <Link to={`/posts/${post.id}`}>See More</Link>
+            <br /> <br />
+          </div>
+        ))
+        }
       </div>
     )
   }
 }
 export default PostView
+
+
+{/* <button>
+<Route exact path='/posts/:id' render={(props) => {
+  const { id } = props.match.params
+  return <PostView postId={id} />
+}} />See More</button> */}

@@ -33,13 +33,21 @@ class PostView extends Component {
   }
 
 
-  handlePostUpdate = async (id, postInfo) => {
-    const editPost = updatePost(id, postInfo)
-    this.setState(prevState => ({
-      posts: prevState.posts.map(post => {
-        return post.id === id ? editPost : post
-      })
-    }))
+  // handlePostUpdate = async (id, postInfo) => {
+  //   const editPost = await updatePost(id, postInfo)
+  //   this.setState(prevState => ({
+  //     posts: prevState.posts.map(post => {
+  //       return post.id === id ? editPost : post
+  //     })
+  //   }))
+  // }
+
+  handlePostUpdate = async (event) => {
+    event.preventDefault()
+    let { id } = this.state.id
+    let postInfo = await getOnePost(id)
+    const editPost = await updatePost(id, postInfo)
+    this.setState({ editPost })
   }
 
   handleChange = (event) => {
@@ -54,7 +62,7 @@ class PostView extends Component {
       <>
         <form onSubmit={(event) => {
           event.preventDefault()
-          this.handlePostUpdate(this.state.id, this.state)
+          this.handlePostUpdate(this.state.id)
           this.props.history.push('/posts');
         }} >
           <h3>Edit Post</h3>

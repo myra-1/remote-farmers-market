@@ -5,7 +5,7 @@ function Main() {
   return (
     <>
       <h3>You logged in!</h3>
-      <Link to='/posts/:id'>Go here</Link>
+      <Link to='/posts'>Go here</Link>
     </>
   )
 }

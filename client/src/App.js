@@ -7,15 +7,16 @@ import AccountCreate from './Components/AccountCreate'
 import AccountAccess from './Components/AccountAccess'
 import Header from './Components/Header'
 import Main from './Components/Main'
+import PostView from './Components/PostView';
 
 import {
   loginUser,
   registerUser,
   verifyUser,
   removeToken,
-  getOnePost
+  getOnePost,
+  getAllPosts
 } from './Services/api-helper'
-import PostView from './Components/PostView';
 
 class App extends Component {
   state = {
@@ -27,11 +28,10 @@ class App extends Component {
     this.confirmUser();
   }
 
-  viewPost = async () => {
-    const post = await getOnePost()
-    this.setState({ post })
-  }
-
+  // viewPost = async () => {
+  //   const post = await getOnePost()
+  //   this.setState({ post })
+  // }
 
   //  AUTH BELOW
   handleLogin = async (loginData) => {
@@ -66,10 +66,11 @@ class App extends Component {
         <Route path='/login' render={(props) => (<AccountCreate {...props} handleRegister={this.handleRegister} />)} />
         <Route path='/login' render={(props) => (<AccountAccess {...props} handleLogin={this.handleLogin} />)} />
         <Route path='/main'> <Main /> </Route>
-        <Route exact path='/posts/:id' render={(props) => {
+        {/* <Route exact path='/posts/:id' render={(props) => {
           const { id } = props.match.params
           return <PostView postId={id} />
-        }} />
+        }} /> */}
+        <Route exact path='/posts' component={PostView} />
       </div>
     )
   }

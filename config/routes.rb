@@ -13,5 +13,3 @@ Rails.application.routes.draw do
 
 
 end
-
-# , to: :show_owner

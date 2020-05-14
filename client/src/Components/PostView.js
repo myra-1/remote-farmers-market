@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getOnePost } from '../Services/api-helper'
+import { getOnePost, getAllPosts } from '../Services/api-helper'
 
 
 class PostView extends Component {
@@ -7,31 +7,26 @@ class PostView extends Component {
     super(props)
 
     this.state = {
-      post: null,
-
+      posts: []
     }
   }
-
   componentDidMount() {
     this.setPost()
   }
-
   setPost = async () => {
-    const post = await getOnePost(this.props.postId)
-    this.setState({ post })
+    const posts = await getAllPosts()
+    this.setState({ posts })
   }
-
-
   render() {
-    const { post } = this.state
+    const { posts } = this.state
     return (
       <div>
-        {post}
+        {posts.map(post => (
+          <div key={post.id}>{post.title}
+            {post.description}</div>
+        ))}
       </div>
     )
   }
-
-
 }
-
 export default PostView

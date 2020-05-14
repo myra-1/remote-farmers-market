@@ -35,15 +35,12 @@ class PostView extends Component {
           </div>
         ))
         }
+
       </div>
+
     )
   }
 }
 export default PostView
 
-
-{/* <button>
-<Route exact path='/posts/:id' render={(props) => {
-  const { id } = props.match.params
-  return <PostView postId={id} />
-}} />See More</button> */}
+//<Route exact path='/posts/:id' render={(props) => (<PostEdit {...props} />)} />

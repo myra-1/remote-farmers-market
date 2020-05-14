@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getOnePost, updatePost } from '../Services/api-helper'
+import Axios from 'axios'
 
 
 class PostView extends Component {
@@ -16,12 +17,10 @@ class PostView extends Component {
       contact_info: '',
     }
   }
-  componentDidMount() {
-    this.setPost()
-  }
 
-  setPost = async () => {
-    const postInfo = await getOnePost(this.props.postId)
+  async componentDidMount() {
+    let { id } = this.props.match.params;
+    const postInfo = await getOnePost(id);
     this.setState({
       id: postInfo.id,
       title: postInfo.title,
@@ -32,6 +31,7 @@ class PostView extends Component {
       contact_info: postInfo.contact_info,
     })
   }
+
 
   handlePostUpdate = async (id, postInfo) => {
     const editPost = updatePost(id, postInfo)
@@ -50,29 +50,25 @@ class PostView extends Component {
   }
 
   render() {
-    // const { posts } = this.state
     return (
       <>
         <form onSubmit={(event) => {
           event.preventDefault()
           this.handlePostUpdate(this.state.id, this.state)
+          this.props.history.push('/posts');
         }} >
           <h3>Edit Post</h3>
+          <label htmlFor="title">Title</label>
           <input
             type="text"
-            value={this.handleChange}
+            name="title"
+            value={this.state.title}
+            onChange={this.handleChange}
           />
+          <button type='submit'>Save</button>
         </form>
       </>
-
-      // <div>
-      //   {posts.map(post => (
-      //     <div key={post.id}>{post.title}
-      //       {post.description}</div>
-      //   ))}
-      // </div>
     )
   }
 }
 export default PostView
-

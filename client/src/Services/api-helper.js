@@ -13,29 +13,40 @@ const api = axios.create({
 // ========================================
 
 // GET	/posts 
+// posts#index
 export const getAllPosts = async () => {
   const response = await api.get('/posts')
   return response.data
 }
 
-
 // GET	/posts/:id(.:format)	
 // posts#show
-//NOW I DONT HAVE THIS
 export const getOnePost = async (id) => {
   const response = await api.post(`/posts/${id}`)
   return response.data
 }
 
+// POST	/posts(.:format)	
+// posts#create
+export const createPost = async (postInfo) => {
+  const response = await api.post('/posts', postInfo)
+  return response.data
+}
 
-// PATCH	/posts/:id(.:format)	
-// posts#update
 
-// PUT	/posts/:id(.:format)	
+// PATCH/PUT	/posts/:id(.:format)	
 // posts#update
+export const updatePost = async (id, postInfo) => {
+  const response = await api.put(`/posts/${id}`, postInfo)
+  return response.data
+}
 
 // DELETE	/posts/:id(.:format)
-
+// posts#destroy
+export const destoryPost = async (id) => {
+  const response = await api.delete(`/posts/${id}`)
+  return response
+}
 
 
 // ========================================

@@ -29,7 +29,8 @@ class PostView extends Component {
           <div key={post.id}>
             {post.title} <br />
             {post.description}
-            <Link to={`/posts/${post.id}`}>See More</Link>
+            <br />
+            <Link to={`/posts/${post.id}`}>Edit this post</Link>
             <br /> <br />
           </div>
         ))

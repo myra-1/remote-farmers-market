@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-import { Route, Link } from 'react-router-dom'
-import { getOnePost, getAllPosts } from '../Services/api-helper'
-
-import PostEdit from './PostEdit'
-import Main from './Main'
-
+import { Link } from 'react-router-dom'
+import { getAllPosts } from '../Services/api-helper'
 
 class PostView extends Component {
   constructor(props) {
@@ -28,7 +24,11 @@ class PostView extends Component {
         {posts.map(post => (
           <div key={post.id}>
             {post.title} <br />
-            {post.description}
+            {post.description} <br />
+            {post.img_url}<br />
+            {post.price}<br />
+            {post.quantity}<br />
+            {post.contact_info}<br />
             {post.tags.map(tag => (
               <p>tags:{tag.name}</p>
             ))}
@@ -47,5 +47,3 @@ class PostView extends Component {
   }
 }
 export default PostView
-
-//<Route exact path='/posts/:id' render={(props) => (<PostEdit {...props} />)} />

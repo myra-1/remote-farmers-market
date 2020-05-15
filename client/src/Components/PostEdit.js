@@ -11,12 +11,13 @@ class PostEdit extends Component {
     this.state = {
       postInfo: {
         id: '',
-        title: 'hi',
+        title: '',
         description: '',
         img_url: '',
         price: '',
         quantity: '',
         contact_info: '',
+        tags: []
       }
     }
   }
@@ -32,7 +33,8 @@ class PostEdit extends Component {
         img_url: postInfo.img_url,
         price: postInfo.price,
         quantity: postInfo.quantity,
-        contact_info: postInfo.contact_info
+        contact_info: postInfo.contact_info,
+        tags: []
       }
     })
   }
@@ -104,7 +106,7 @@ class PostEdit extends Component {
         </form>
         <br />
         <br />
-        <button onClick={() => { this.handlePostDelete(this.state.id) }}>Delete</button>
+        <button onClick={() => { this.handlePostDelete(this.state.postInfo.id) }}>Delete</button>
         <br />
         <br />
         <button><Link to={'/posts'}>Back</Link></button>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { getOnePost, createPost } from '../Services/api-helper'
+import { createPost } from '../Services/api-helper'
 
 
 
@@ -23,7 +23,7 @@ class PostCreate extends Component {
   }
 
   handlePostCreation = async (postInfo) => {
-    const newPost = await createPost(postInfo)
+    await createPost(postInfo)
   }
 
   handleChange = (event) => {
@@ -38,9 +38,9 @@ class PostCreate extends Component {
   render() {
     return (
       <>
-        <form onSubmit={(event) => {
+        <form onSubmit={async (event) => {
           event.preventDefault()
-          this.handlePostCreation(this.state.postInfo)
+          await this.handlePostCreation(this.state.postInfo)
           // handlesubmitfortags
           this.props.history.push('/posts');
         }} >

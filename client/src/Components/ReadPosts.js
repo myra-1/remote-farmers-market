@@ -11,7 +11,7 @@ function ReadPosts(props) {
           {post.title} <br />
           {post.description}
           <br />
-          <Link to={`/posts/${post.id}`}>Edit this post</Link>
+          <Link to={`/posts/${post.id}`}>See this post</Link>
           <button onClick={() => { props.handlePostDelete(post.id) }}>Delete</button>
           <br /> <br />
         </div>

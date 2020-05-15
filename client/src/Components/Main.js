@@ -67,10 +67,13 @@ class Main extends Component {
           <Route path='/login' render={(props) => (<AccountAccess {...props} handleLogin={this.props.handleLogin} />)} />
 
           <Route exact path='/posts' render={(props) => (<ReadPosts {...props} posts={this.state.posts} currentUser={this.props.currentUser} handlePostDelete={this.handlePostDelete} />)} />
-          <Route exact path='/post/:id' render={(props) => { return (<ShowPost id={props.match.params.id} currentUser={this.props.currentUser} />) }} />
+          <Route exact path='/post/:id' render={(props) => {
+            const { id } = props.match.params
+            return (<ShowPost postId={id} currentUser={this.props.currentUser} />)
+          }} />
 
           <Route path="/post/new" render={(props) => (<CreatePost {...props} handlePostSubmit={this.handlePostSubmit} currentUser={this.props.currentUser} />)} />
-          <Route exact path='posts/:id' render={(props) => {
+          <Route exact path='posts/:id/edit' render={(props) => {
             const { id } = props.match.params
             return (<UpdatePost {...props} handlePostUpdate={this.handlePostUpdate} postId={id} currentUser={this.props.currentUser} />)
           }} />

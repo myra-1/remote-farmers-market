@@ -11,19 +11,28 @@ class ShowPost extends Component {
   }
 
   componentDidMount() {
-    this.setPost(this.props.id)
+    this.setPost()
   }
 
   setPost = async (id) => {
-    const post = await getOnePost(id)
+    const post = await getOnePost(this.props.postId)
     this.setState({ post })
+  }
+
+  handleChange = (event) => {
+    const { value } = event.target
+    this.setState({
+      post: value
+    })
   }
 
   render() {
     const { post } = this.state
     return (
       <div>
-        {post}
+        {post && (
+          <h3>{post.title}</h3>
+        )}
       </div>
     )
   }

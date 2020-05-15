@@ -73,6 +73,12 @@ class PostView extends Component {
             value={this.state.title}
             onChange={this.handleChange}
           />
+          <input
+            type="text"
+            name="description"
+            value={this.state.description}
+            onChange={this.handleChange}
+          />
           <button type='submit'>Save</button>
         </form>
       </>

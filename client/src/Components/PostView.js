@@ -29,6 +29,9 @@ class PostView extends Component {
           <div key={post.id}>
             {post.title} <br />
             {post.description}
+            {post.tags.map(tag => (
+              <p>tags:{tag.name}</p>
+            ))}
             <br />
             <button><Link to={`/posts/${post.id}/edit`}>Edit this post</Link></button>
             <button><Link to={`/posts/${post.id}/view`}>See this post</Link></button>

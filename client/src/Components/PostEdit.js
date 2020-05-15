@@ -37,14 +37,6 @@ class PostEdit extends Component {
     })
   }
 
-  // handlePostUpdate = async (event) => {
-  //   // event.preventDefault()
-  //   let { id } = this.state.postInfo.postInfo.id
-  //   let postInfo = await getOnePost(id)
-  //   const editPost = await updatePost(id, postInfo)
-  //   this.setState({ editPost })
-  // }
-
   handlePostUpdate = async () => {
     const updatedPost = await updatePost(
       this.state.postInfo.id,

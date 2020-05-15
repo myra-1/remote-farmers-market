@@ -65,7 +65,9 @@ class App extends Component {
         <Route exact path='/posts' component={PostView} />
         <Route exact path='/posts/:id/view' component={PostIndiv} />
         <Route exact path='/posts/:id/edit' component={PostEdit} />
-        <Route exact path='/posts/new' render={(props) => (<PostCreate {...props} currentUser={this.currentUser} />)} />
+        {this.state.currentUser &&
+          <Route exact path='/posts/new' render={(props) => (<PostCreate {...props} currentUser={this.state.currentUser.id} />)} />
+        }
       </div>
     )
   }

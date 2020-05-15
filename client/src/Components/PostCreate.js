@@ -17,50 +17,31 @@ class PostCreate extends Component {
         price: '',
         quantity: '',
         contact_info: '',
+        user_id: this.props.currentUser
       }
     }
   }
 
-  async componentDidMount() {
-    let { id } = this.props.match.params;
-    const postInfo = await getOnePost(id);
-    this.setState({
-      postInfo: {
-        id: postInfo.id,
-        title: postInfo.title,
-        description: postInfo.description,
-        img_url: postInfo.img_url,
-        price: postInfo.price,
-        quantity: postInfo.quantity,
-        contact_info: postInfo.contact_info
-      }
-    })
-  }
-
   handlePostCreation = async (postInfo) => {
     const newPost = await createPost(postInfo)
-    this.setState(prevState => ({
-      postInfo: [...prevState.postInfo, newPost]
-    }))
   }
 
   handleChange = (event) => {
     const { name, value } = event.target
-    this.setState({
-      postInfo: {
-        ...this.state,
-        name: value
-      }
-    })
+    let new_state = { ...this.state }
+    new_state.postInfo[name] = value;
+    this.setState(new_state);
   }
 
+  // handlechange for tag
 
   render() {
     return (
       <>
         <form onSubmit={(event) => {
           event.preventDefault()
-          this.handlePostUpdate(this.state.postInfo.postInfo.id)
+          this.handlePostCreation(this.state.postInfo)
+          // handlesubmitfortags
           this.props.history.push('/posts');
         }} >
           <h3>Create Post</h3>

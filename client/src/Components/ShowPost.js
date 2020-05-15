@@ -11,11 +11,11 @@ class ShowPost extends Component {
   }
 
   componentDidMount() {
-    this.setPost(this.props.postId)
+    this.setPost(this.props.id)
   }
 
-  setPost = async (postId) => {
-    const post = await getOnePost(postId)
+  setPost = async (id) => {
+    const post = await getOnePost(id)
     this.setState({ post })
   }
 

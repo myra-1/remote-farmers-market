@@ -40,20 +40,20 @@ class Main extends Component {
     }))
   }
 
-  handlePostUpdate = async (postId, postInfo) => {
-    const editPost = await updatePost(postId, postInfo)
+  handlePostUpdate = async (id, postInfo) => {
+    const editPost = await updatePost(id, postInfo)
     this.setState(prevState => ({
       posts: prevState.posts.map(post => {
-        return post.id = postId ? editPost : post
+        return post.id = id ? editPost : post
       })
     }))
   }
 
-  handlePostDelete = async (postId) => {
-    await destroyPost(postId)
+  handlePostDelete = async (id) => {
+    await destroyPost(id)
     this.setState(prevState => ({
       posts: prevState.posts.filter(post => {
-        return post.id !== postId
+        return post.id !== id
       })
     }))
   }
@@ -67,10 +67,10 @@ class Main extends Component {
           <Route path='/login' render={(props) => (<AccountAccess {...props} handleLogin={this.props.handleLogin} />)} />
 
           <Route exact path='/posts' render={(props) => (<ReadPosts {...props} posts={this.state.posts} currentUser={this.props.currentUser} handlePostDelete={this.handlePostDelete} />)} />
-          <Route exact path='/post/:id' render={(props) => { return (<ShowPost postId={props.match.params.postId} currentUser={this.props.currentUser} />) }} />
+          <Route exact path='/post/:id' render={(props) => { return (<ShowPost id={props.match.params.id} currentUser={this.props.currentUser} />) }} />
 
           <Route path="/post/new" render={(props) => (<CreatePost {...props} handlePostSubmit={this.handlePostSubmit} currentUser={this.props.currentUser} />)} />
-          <Route exact path='posts/:id/edit' render={(props) => {
+          <Route exact path='posts/:id' render={(props) => {
             const { id } = props.match.params
             return (<UpdatePost {...props} handlePostUpdate={this.handlePostUpdate} postId={id} currentUser={this.props.currentUser} />)
           }} />

@@ -62,6 +62,7 @@ class App extends Component {
           handleRegister={this.handleRegister}
           handleLogout={this.handleLogout}
           handleLogin={this.handleLogin}
+          currentUser={this.state.currentUser}
         />
         {/* <Route exact path='/posts' component={PostView} />
         <Route exact path='/posts/:id' component={PostEdit} /> */}

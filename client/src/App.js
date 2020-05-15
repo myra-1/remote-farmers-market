@@ -3,12 +3,13 @@ import { Route, Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import './App.css';
 
-import AccountCreate from './Components/AccountCreate'
-import AccountAccess from './Components/AccountAccess'
+// import AccountCreate from './Components/AccountCreate'
+// import AccountAccess from './Components/AccountAccess'
+// import PostView from './Components/PostView'
+// import PostEdit from './Components/PostEdit'
+
 import Header from './Components/Header'
 import Main from './Components/Main'
-import PostView from './Components/PostView'
-import PostEdit from './Components/PostEdit'
 
 import {
   loginUser,
@@ -55,10 +56,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header handleLogout={this.handleLogout} currentUser={this.state.currentUser} />
-        <Route path='/register' render={(props) => (<AccountCreate {...props} handleRegister={this.handleRegister} />)} />
-        <Route path='/login' render={(props) => (<AccountAccess {...props} handleLogin={this.handleLogin} />)} />
-        <Route path='/posts'> <Main /> </Route>
+        {/* <Route path='/register' render={(props) => (<AccountCreate {...props} handleRegister={this.handleRegister} />)} />
+        <Route path='/login' render={(props) => (<AccountAccess {...props} handleLogin={this.handleLogin} />)} /> */}
+        <Main
+          handleRegister={this.handleRegister}
+          handleLogout={this.handleLogout}
+          handleLogin={this.handleLogin}
+        />
         {/* <Route exact path='/posts' component={PostView} />
         <Route exact path='/posts/:id' component={PostEdit} /> */}
       </div>

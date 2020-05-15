@@ -7,6 +7,7 @@ const api = axios.create({
 })
 
 
+
 // ========================================
 // ================ POST ==================
 // ========================================
@@ -79,3 +80,36 @@ export const verifyUser = async () => {
 export const removeToken = () => {
   api.defaults.headers.common.authorization = null;
 }
+// ========================================
+// ================ USER ==================
+// ========================================
+
+
+// /users/:user_id/posts(.:format)	
+// posts#show_owner
+
+// users_path	GET	/users(.:format)	
+// users#index
+export const getAllUsers = async () => {
+  const response = await api.get('/users')
+  return response.data
+}
+
+// POST	/users(.:format)	
+// users#create
+
+// user_path	GET	/users/:id(.:format)	
+// users#show
+export const getOneUser = async (userId) => {
+  const response = await api.get(`/users/${userId}`)
+  return response.data
+}
+
+// PATCH	/users/:id(.:format)	
+// users#update
+
+// PUT	/users/:id(.:format)	
+// users#update
+
+// DELETE	/users/:id(.:format)	
+// users#destroy

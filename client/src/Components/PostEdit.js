@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { getOnePost, updatePost, destroyPost } from '../Services/api-helper'
-import Axios from 'axios'
 
 
-class PostView extends Component {
+
+class PostEdit extends Component {
   constructor(props) {
     super(props)
 
@@ -32,16 +32,6 @@ class PostView extends Component {
     })
   }
 
-
-  // handlePostUpdate = async (id, postInfo) => {
-  //   const editPost = await updatePost(id, postInfo)
-  //   this.setState(prevState => ({
-  //     posts: prevState.posts.map(post => {
-  //       return post.id === id ? editPost : post
-  //     })
-  //   }))
-  // }
-
   handlePostUpdate = async (event) => {
     event.preventDefault()
     let { id } = this.state.id
@@ -52,11 +42,6 @@ class PostView extends Component {
 
   handlePostDelete = async (id) => {
     await destroyPost(id)
-    // this.setState(prevState => ({
-    //   posts: prevState.posts.filter(post => {
-    //     return post.id !== id
-    //   })
-    // }))
     this.props.history.push('/posts');
   }
 
@@ -90,11 +75,33 @@ class PostView extends Component {
             value={this.state.description}
             onChange={this.handleChange}
           />
+          <label htmlFor="price">Price</label>
+          <input
+            type="text"
+            name="price"
+            value={this.state.price}
+            onChange={this.handleChange}
+          />
+          <label htmlFor="quantity">Quantity</label>
+          <input
+            type="text"
+            name="quantity"
+            value={this.state.quantity}
+            onChange={this.handleChange}
+          />
+          <label htmlFor="contact_info">Contact:</label>
+          <input
+            type="text"
+            name="contact_info"
+            value={this.state.contact_info}
+            onChange={this.handleChange}
+          />
           <button type='submit'>Save</button>
         </form>
+
         <button onClick={() => { this.handlePostDelete(this.state.id) }}>Delete</button>
       </>
     )
   }
 }
-export default PostView
+export default PostEdit

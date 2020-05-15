@@ -32,7 +32,6 @@ export const createPost = async (postInfo) => {
   return response.data
 }
 
-
 // PATCH/PUT	/posts/:id(.:format)	
 // posts#update
 export const updatePost = async (id, postInfo) => {

@@ -57,7 +57,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header handleLogout={this.handleLogout} currentUser={this.state.currentUser} />
-        <Route path='/login' render={(props) => (<AccountCreate {...props} handleRegister={this.handleRegister} />)} />
+        <Route path='/register' render={(props) => (<AccountCreate {...props} handleRegister={this.handleRegister} />)} />
         <Route path='/login' render={(props) => (<AccountAccess {...props} handleLogin={this.handleLogin} />)} />
         <Route path='/main'> <Main /> </Route>
         <Route exact path='/posts' component={PostView} />

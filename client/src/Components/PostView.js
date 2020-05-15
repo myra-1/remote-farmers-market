@@ -30,12 +30,13 @@ class PostView extends Component {
             {post.title} <br />
             {post.description}
             <br />
-            <button><Link to={`/posts/${post.id}`}>Edit this post</Link></button>
+            <button><Link to={`/posts/${post.id}/edit`}>Edit this post</Link></button>
             <button><Link to={`/posts/${post.id}/view`}>See this post</Link></button>
             <br /> <br />
           </div>
         ))
         }
+        <button><Link to={`/posts/new`}>Create New</Link></button>
 
       </div>
 

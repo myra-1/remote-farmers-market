@@ -32,10 +32,12 @@ export const createPost = async (postInfo) => {
   return response.data
 }
 
+
 // PATCH/PUT	/posts/:id(.:format)	
 // posts#update
-export const updatePost = async (id, postInfo) => {
-  const response = await api.put(`/posts/${id}`, postInfo)
+export const updatePost = async (id, postInformation) => {
+  console.error(id, postInformation);
+  const response = await api.put(`/posts/${id}`, postInformation)
   return response.data
 }
 

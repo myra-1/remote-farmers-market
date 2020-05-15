@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { getOnePost, updatePost, destroyPost } from '../Services/api-helper'
+import { getOnePost, createPost } from '../Services/api-helper'
 
 
 
-class PostEdit extends Component {
+class PostCreate extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       postInfo: {
         id: '',
-        title: 'hi',
+        title: '',
         description: '',
         img_url: '',
         price: '',
@@ -37,42 +37,33 @@ class PostEdit extends Component {
     })
   }
 
-  // handlePostUpdate = async (event) => {
-  //   // event.preventDefault()
-  //   let { id } = this.state.postInfo.postInfo.id
-  //   let postInfo = await getOnePost(id)
-  //   const editPost = await updatePost(id, postInfo)
-  //   this.setState({ editPost })
-  // }
-
-  handlePostUpdate = async () => {
-    const updatedPost = await updatePost(
-      this.state.postInfo.id,
-      this.state.postInfo)
-    this.setState({ postInfo: updatedPost })
+  handlePostCreation = async (postInfo) => {
+    const newPost = await createPost(postInfo)
+    this.setState(prevState => ({
+      postInfo: [...prevState.postInfo, newPost]
+    }))
   }
 
   handleChange = (event) => {
     const { name, value } = event.target
-    let new_state = { ...this.state }
-    new_state.postInfo[name] = value;
-    this.setState(new_state);
+    this.setState({
+      postInfo: {
+        ...this.state,
+        name: value
+      }
+    })
   }
 
-  handlePostDelete = async (id) => {
-    await destroyPost(id)
-    this.props.history.push('/posts');
-  }
 
   render() {
     return (
       <>
-        <form onSubmit={async (event) => {
+        <form onSubmit={(event) => {
           event.preventDefault()
-          await this.handlePostUpdate()
+          this.handlePostUpdate(this.state.postInfo.postInfo.id)
           this.props.history.push('/posts');
         }} >
-          <h3>Edit Post</h3>
+          <h3>Create Post</h3>
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -112,12 +103,10 @@ class PostEdit extends Component {
         </form>
         <br />
         <br />
-        <button onClick={() => { this.handlePostDelete(this.state.id) }}>Delete</button>
         <br />
-        <br />
-        <button><Link to={'/posts'}>Back</Link></button>
+        <button><Link to={'/posts'}>Nevermind</Link></button>
       </>
     )
   }
 }
-export default PostEdit
+export default PostCreate

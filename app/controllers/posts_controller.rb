@@ -24,6 +24,14 @@ class PostsController < ApplicationController
   #POST /posts
   def create
     @post = Post.new(post_params)
+
+    if params.has_key?(:tags)
+      @post.tags.clear
+      params[:tags].each do |t|
+        @post.tags << Tag.find(t)
+      end
+    end
+
     if @post.save
     render json: @post, status: :created, location: @post
     else
@@ -35,6 +43,13 @@ class PostsController < ApplicationController
   def update
     # @post = Post.find(params[:id])
     # ^ DELETE THIS - made unnecessary bc of the find_post before_action
+    if params.has_key?(:tags)
+      @post.tags.clear
+      params[:tags].each do |t|
+        @post.tags << Tag.find(t)
+      end
+    end
+    
     if @post.update(post_params)
       render json: @post
     else
@@ -49,11 +64,11 @@ class PostsController < ApplicationController
     @post.destroy
   end
 
-  def add_tag
-    @tag = Tag.find(params[:tag_id])
-    @post.tag << @tag
-    render json: @post, include: :tags
-  end
+  # def add_tag
+  #   @tag = Tag.find(params[:tag_id])
+  #   @post.tag << @tag
+  #   render json: @post, include: :tags
+  # end
   
   private
 

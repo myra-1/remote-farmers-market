@@ -3,6 +3,8 @@ import { Route } from 'react-router-dom'
 import { getAllPosts, createPost, updatePost, destroyPost } from '../Services/api-helper'
 
 import ReadPosts from './ReadPosts'
+import UpdatePost from './UpdatePost'
+import CreatePost from './CreatePost'
 
 class Main extends Component {
   constructor() {
@@ -50,6 +52,13 @@ class Main extends Component {
       <>
         <Route exact path='/posts' render={(props) => (
           <ReadPosts {...props} posts={this.state.posts} />
+        )} />
+        <Route path='posts/:id/edit' render={(props) => {
+          const { id } = props.match.params
+          return <UpdatePost {...props} handlePostUpdate={this.handlePostUpdate} postId={id} />
+        }} />
+        <Route path="/newpost" render={(props) => (
+          <CreatePost {...props} handlePostSubmit={this.handlePostSubmit} />
         )} />
       </>
     )

@@ -29,6 +29,7 @@ class UpdatePost extends Component {
   populatePostInfo = async () => {
     const thePost = await getOnePost(this.props.postId)
     this.setState({
+      id: thePost.id,
       title: thePost.title
     })
   }

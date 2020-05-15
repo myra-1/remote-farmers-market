@@ -53,7 +53,7 @@ class Main extends Component {
         <Route exact path='/posts' render={(props) => (
           <ReadPosts {...props} posts={this.state.posts} />
         )} />
-        <Route path='posts/:id/edit' render={(props) => {
+        <Route exact path='posts/:id/edit' render={(props) => {
           const { id } = props.match.params
           return <UpdatePost {...props} handlePostUpdate={this.handlePostUpdate} postId={id} />
         }} />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getOnePost, updatePost } from '../Services/api-helper'
+import { getOnePost, updatePost, destroyPost } from '../Services/api-helper'
 import Axios from 'axios'
 
 
@@ -50,6 +50,16 @@ class PostView extends Component {
     this.setState({ editPost })
   }
 
+  handlePostDelete = async (id) => {
+    await destroyPost(id)
+    // this.setState(prevState => ({
+    //   posts: prevState.posts.filter(post => {
+    //     return post.id !== id
+    //   })
+    // }))
+    this.props.history.push('/posts');
+  }
+
   handleChange = (event) => {
     const { value } = event.target
     this.setState({
@@ -73,8 +83,16 @@ class PostView extends Component {
             value={this.state.title}
             onChange={this.handleChange}
           />
+          <label htmlFor="description">Description</label>
+          <input
+            type="text"
+            name="description"
+            value={this.state.description}
+            onChange={this.handleChange}
+          />
           <button type='submit'>Save</button>
         </form>
+        <button onClick={() => { this.handlePostDelete(this.state.id) }}>Delete</button>
       </>
     )
   }

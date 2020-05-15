@@ -42,7 +42,7 @@ export const updatePost = async (id, postInfo) => {
 
 // DELETE	/posts/:id(.:format)
 // posts#destroy
-export const destoryPost = async (id) => {
+export const destroyPost = async (id) => {
   const response = await api.delete(`/posts/${id}`)
   return response
 }

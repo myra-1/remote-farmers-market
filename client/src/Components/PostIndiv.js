@@ -48,7 +48,7 @@ class PostIndiv extends Component {
           {this.state.postInfo.quantity} <br />
           {this.state.postInfo.contact_info}<br />
         </div>
-        <Link to={'/posts'}>Back</Link>
+        <button><Link to={'/posts'}>Back</Link></button>
       </>
     )
   }

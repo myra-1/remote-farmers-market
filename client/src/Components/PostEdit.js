@@ -120,7 +120,7 @@ class PostEdit extends Component {
         <button onClick={() => { this.handlePostDelete(this.state.id) }}>Delete</button>
         <br />
         <br />
-        <Link to={'/posts'}>Back</Link>
+        <button><Link to={'/posts'}>Back</Link></button>
       </>
     )
   }

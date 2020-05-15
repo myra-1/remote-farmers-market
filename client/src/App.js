@@ -9,6 +9,7 @@ import Header from './Components/Header'
 import Main from './Components/Main'
 import PostView from './Components/PostView'
 import PostEdit from './Components/PostEdit'
+import PostIndiv from './Components/PostIndiv'
 
 import {
   loginUser,
@@ -61,6 +62,7 @@ class App extends Component {
         <Route path='/login' render={(props) => (<AccountAccess {...props} handleLogin={this.handleLogin} />)} />
         <Route path='/main'> <Main /> </Route>
         <Route exact path='/posts' component={PostView} />
+        <Route exact path='/posts/:id/view' component={PostIndiv} />
         <Route exact path='/posts/:id' component={PostEdit} />
       </div>
     )

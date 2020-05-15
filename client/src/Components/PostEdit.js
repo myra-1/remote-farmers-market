@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { getOnePost, updatePost, destroyPost } from '../Services/api-helper'
 
 
@@ -114,8 +115,12 @@ class PostEdit extends Component {
           />
           <button>Save</button>
         </form>
-
+        <br />
+        <br />
         <button onClick={() => { this.handlePostDelete(this.state.id) }}>Delete</button>
+        <br />
+        <br />
+        <Link to={'/posts'}>Back</Link>
       </>
     )
   }

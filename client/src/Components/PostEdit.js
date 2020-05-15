@@ -24,30 +24,42 @@ class PostEdit extends Component {
     let { id } = this.props.match.params;
     const postInfo = await getOnePost(id);
     this.setState({
-      postInfo
-      // id: postInfo.id,
-      // title: postInfo.title,
-      // description: postInfo.description,
-      // img_url: postInfo.img_url,
-      // price: postInfo.price,
-      // quantity: postInfo.quantity,
-      // contact_info: postInfo.contact_info,
+      postInfo: {
+        id: postInfo.id,
+        title: postInfo.title,
+        description: postInfo.description,
+        img_url: postInfo.img_url,
+        price: postInfo.price,
+        quantity: postInfo.quantity,
+        contact_info: postInfo.contact_info
+      }
     })
   }
 
-  handlePostUpdate = async (event) => {
-    // event.preventDefault()
-    let { id } = this.state.id
-    let postInfo = await getOnePost(id)
-    const editPost = await updatePost(id, postInfo)
-    this.setState({ editPost })
+  // handlePostUpdate = async (event) => {
+  //   // event.preventDefault()
+  //   let { id } = this.state.postInfo.postInfo.id
+  //   let postInfo = await getOnePost(id)
+  //   const editPost = await updatePost(id, postInfo)
+  //   this.setState({ editPost })
+  // }
+
+  handlePostUpdate = async (id, postInfo) => {
+    const updatedPost = await updatePost(id, postInfo)
+    this.setState(prevState => ({
+      postInfo: prevState.postInfo.map(post => {
+        return postInfo.id === id ? updatedPost : post
+      })
+    }))
   }
 
   handleChange = (event) => {
-    const { value } = event.target
+    const { name, value } = event.target
     this.setState({
-      ...this.state,
-      // [name]: value
+      postInfo: {
+        ...this.state,
+        name: value
+      }
     })
   }
 
@@ -56,13 +68,12 @@ class PostEdit extends Component {
     this.props.history.push('/posts');
   }
 
-
   render() {
     return (
       <>
         <form onSubmit={(event) => {
           event.preventDefault()
-          this.handlePostUpdate(this.state.id)
+          this.handlePostUpdate(this.state.postInfo.postInfo.id)
           this.props.history.push('/posts');
         }} >
           <h3>Edit Post</h3>
@@ -101,7 +112,7 @@ class PostEdit extends Component {
             value={this.state.postInfo.contact_info}
             onChange={this.handleChange}
           />
-          <button onClick={() => { this.handlePostUpdate(this.state.id) }}>Save</button>
+          <button>Save</button>
         </form>
 
         <button onClick={() => { this.handlePostDelete(this.state.id) }}>Delete</button>

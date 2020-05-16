@@ -106,6 +106,13 @@ class PostEdit extends Component {
             value={this.state.postInfo.description}
             onChange={this.handleChange}
           />
+          <label htmlFor="img_url">Image URL</label>
+          <input
+            type="text"
+            name="img_url"
+            value={this.state.postInfo.img_url}
+            onChange={this.handleChange}
+          />
           <label htmlFor="price">Price</label>
           <input
             type="text"

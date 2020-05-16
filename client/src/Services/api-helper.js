@@ -18,6 +18,11 @@ export const getAllPosts = async () => {
   return response.data
 }
 
+export const getAllTags = async () => {
+  const response = await api.get('/tags')
+  return response.data
+}
+
 // GET	/posts/:id(.:format)	
 // posts#show
 export const getOnePost = async (id) => {

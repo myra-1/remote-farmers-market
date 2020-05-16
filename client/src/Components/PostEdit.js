@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { getOnePost, updatePost, destroyPost } from '../Services/api-helper'
+import { getOnePost, updatePost, destroyPost, getAllTags } from '../Services/api-helper'
 
 
 
@@ -18,13 +18,15 @@ class PostEdit extends Component {
         quantity: '',
         contact_info: '',
         tags: []
-      }
+      },
+      tags: []
     }
   }
 
   async componentDidMount() {
     let { id } = this.props.match.params;
     const postInfo = await getOnePost(id);
+    let tags = await getAllTags();
     this.setState({
       postInfo: {
         id: postInfo.id,
@@ -34,22 +36,45 @@ class PostEdit extends Component {
         price: postInfo.price,
         quantity: postInfo.quantity,
         contact_info: postInfo.contact_info,
-        tags: []
-      }
+        tags: postInfo.tags
+      },
+      tags: tags
     })
   }
 
   handlePostUpdate = async () => {
+    let postInfo = this.state.postInfo;
+    postInfo.tags = postInfo.tags.map(t => t.id);
     const updatedPost = await updatePost(
       this.state.postInfo.id,
-      this.state.postInfo)
+      postInfo)
+    console.log(updatedPost);
     this.setState({ postInfo: updatedPost })
   }
 
   handleChange = (event) => {
-    const { name, value } = event.target
+    let { name, value } = event.target;
     let new_state = { ...this.state }
-    new_state.postInfo[name] = value;
+    if (name === "tags") {
+      var options = event.target.options;
+      let tags = [];
+      value = [];
+      for (var i = 0, l = options.length; i < l; i++) {
+        if (options[i].selected) {
+          let val = Number(options[i].value);
+          value.push(val);
+          let tag = this.state.tags.find(t => t.id === val);
+          tags.push(tag);
+        }
+      }
+
+      new_state.postInfo[name] = tags;
+
+    } else {
+      new_state.postInfo[name] = value;
+    }
+
+
     this.setState(new_state);
   }
 
@@ -102,6 +127,12 @@ class PostEdit extends Component {
             value={this.state.postInfo.contact_info}
             onChange={this.handleChange}
           />
+          <label htmlFor="tags">Tags:</label>
+          <select name="tags" multiple onChange={this.handleChange} value={this.state.postInfo.tags.map(t => t.id)}>
+            {this.state.tags.map(t => {
+              return <option key={t.id} value={t.id}>{t.name}</option>
+            })}
+          </select>
           <button>Save</button>
         </form>
         <br />

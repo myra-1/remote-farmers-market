@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { createPost } from '../Services/api-helper'
+import { createPost, getAllTags } from '../Services/api-helper'
 
 
 
@@ -18,8 +18,14 @@ class PostCreate extends Component {
         quantity: '',
         contact_info: '',
         user_id: this.props.currentUser
-      }
+      },
+      tags: []
     }
+  }
+
+  async componentDidMount() {
+    let tags = await getAllTags();
+    this.setState({ ...this.state, tags: tags })
   }
 
   handlePostCreation = async (postInfo) => {
@@ -27,8 +33,18 @@ class PostCreate extends Component {
   }
 
   handleChange = (event) => {
-    const { name, value } = event.target
+    let { name, value } = event.target;
+    if (name === "tags") {
+      var options = event.target.options;
+      value = [];
+      for (var i = 0, l = options.length; i < l; i++) {
+        if (options[i].selected) {
+          value.push(Number(options[i].value));
+        }
+      }
+    }
     let new_state = { ...this.state }
+    console.log(name, value);
     new_state.postInfo[name] = value;
     this.setState(new_state);
   }
@@ -38,6 +54,7 @@ class PostCreate extends Component {
   render() {
     return (
       <>
+
         <form onSubmit={async (event) => {
           event.preventDefault()
           await this.handlePostCreation(this.state.postInfo)
@@ -80,6 +97,12 @@ class PostCreate extends Component {
             value={this.state.postInfo.contact_info}
             onChange={this.handleChange}
           />
+          <label htmlFor="tags">Tags:</label>
+          <select name="tags" multiple onChange={this.handleChange}>
+            {this.state.tags.map(t => {
+              return <option key={t.id} value={t.id}>{t.name}</option>
+            })}
+          </select>
           <button>Save</button>
         </form>
         <br />

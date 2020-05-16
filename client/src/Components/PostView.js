@@ -25,7 +25,7 @@ class PostView extends Component {
           <div key={post.id}>
             {post.title} <br />
             {post.description} <br />
-            {post.img_url}<br />
+            {post.img_url ? <img src={post.img_url} width="300" height="300" /> : null}<br />
             {post.price}<br />
             {post.quantity}<br />
             {post.contact_info}<br />

@@ -33,7 +33,7 @@ class PostsController < ApplicationController
     end
 
     if @post.save
-    render json: @post, status: :created, location: @post
+    render json: @post, status: :created, location: @post, include: :tags
     else
       render json: @post.errors, status: :unprocessable_entity
     end
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
     end
     
     if @post.update(post_params)
-      render json: @post
+      render json: @post, include: :tags
     else
       render json: @post.errors, status: :unprocessable_entity
     end

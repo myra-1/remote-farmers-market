@@ -147,14 +147,15 @@ class PostEdit extends Component {
             />
           </div>
           <div class="form-group">
-            <label htmlFor="tags">Tags:</label>
+            <label htmlFor="tags">Tags</label>
             <select name="tags" class="form-control" multiple onChange={this.handleChange} value={this.state.postInfo.tags.map(t => t.id)}>
               {this.state.tags.map(t => {
                 return <option selected key={t.id} value={t.id}>{t.name}</option>
               })}
             </select>
+            <small id="tagHelp" class="form-text text-muted">Select all that apply</small>
           </div>
-          <button>Save</button>
+          <button class="form-group">Save</button>
         </form >
         <br />
         <button onClick={() => { this.handlePostDelete(this.state.postInfo.id) }}>Delete</button>

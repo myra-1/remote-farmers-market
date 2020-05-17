@@ -117,14 +117,15 @@ class PostCreate extends Component {
             />
           </div>
           <div class="form-group">
-            <label htmlFor="tags">Tags:</label>
+            <label htmlFor="tags">Tags</label>
             <select class="form-control" name="tags" multiple onChange={this.handleChange}>
               {this.state.tags.map(t => {
                 return <option key={t.id} value={t.id}>{t.name}</option>
               })}
             </select>
+            <small id="tagHelp" class="form-text text-muted">Select all that apply</small>
           </div>
-          <button>Save</button>
+          <button class="form-group">Save</button>
         </form>
         <br />
         <br />

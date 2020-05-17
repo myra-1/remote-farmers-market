@@ -86,6 +86,9 @@ class PostEdit extends Component {
   render() {
     return (
       <>
+        <div className="deleteButtonDiv">
+          <button className="deleteButton" onClick={() => { this.handlePostDelete(this.state.postInfo.id) }}>Delete</button>
+        </div>
         <h3>Edit Post</h3>
         <form onSubmit={async (event) => {
           event.preventDefault()
@@ -157,11 +160,11 @@ class PostEdit extends Component {
           </div>
           <button class="form-group">Save</button>
         </form >
-        <br />
-        <button onClick={() => { this.handlePostDelete(this.state.postInfo.id) }}>Delete</button>
-        <br />
-        <br />
-        <Link to={'/'} className="backLink">Back</Link>
+        <div>
+          <button>
+            <Link to={'/'} className="backLink">Back</Link>
+          </button>
+        </div>
       </>
     )
   }

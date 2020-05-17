@@ -106,11 +106,14 @@ h3 {
   font-size: 22px;
 }
 
-.sharePostDiv{
+.sharePostDiv, .deleteButtonDiv{
   text-align: right;
 }
-.sharePostLink{
+.sharePostLink,{
   padding: 20px
+}
+.deleteButton{
+  margin: 10px;
 }
 .nameAndLogout{
   display: flex;

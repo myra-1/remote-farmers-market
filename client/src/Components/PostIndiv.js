@@ -44,8 +44,6 @@ class PostIndiv extends Component {
       <>
         <div className="indivPost">
           <h3 className="indivPostTitle">{this.state.postInfo.title}</h3>
-          {/* {this.state.postInfo.description} */}
-          {/* {this.state.postInfo.img_url ? <img src={this.state.postInfo.img_url} width="300" height="300" /> : null} */}
           <p className="postPrice">
             Price: {this.state.postInfo.price}
           </p>
@@ -55,7 +53,6 @@ class PostIndiv extends Component {
           <p className="postContact">
             Contact seller via: {this.state.postInfo.contact_info}
           </p>
-          {/* {this.state.postInfo.tags.map(tag => (<p>tags:{tag.name}</p>))} */}
           <Link to={'/'} >Go back</Link>
         </div>
       </>

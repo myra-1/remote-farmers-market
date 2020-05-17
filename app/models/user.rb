@@ -7,15 +7,16 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 4}
 
   has_many :posts
+
+  def return_data 
+    {
+      id: id,
+      display_name: display_name,
+      email: email,
+      created_at: created_at,
+      updated_at: updated_at
+    }
+  end
 end
 
 
-def return_data 
-  {
-    id: id,
-    display_name: display_name,
-    email: email,
-    created_at: created_at,
-    updated_at: updated_at
-  }
-end

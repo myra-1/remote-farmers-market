@@ -29,9 +29,9 @@ class PostView extends Component {
               {/* <p className="postPrice">Price: {post.price}</p>
               <p className="postQuantity">Quantity: {post.quantity}</p> */}
               {post.img_url ? <img src={post.img_url} width="300" height="300" className="postImg" /> : null}
-              <p className="postDescription">Description: {post.description}</p>
-              <div className="postTags"><p>Tags: </p>{post.tags.map(tag => (
-                <p>{tag.name}</p>
+              <p className="postDescription">{post.description}</p>
+              <div className="postTags">{post.tags.map(tag => (
+                <p className="postTagSingle">{tag.name}</p>
               ))}
               </div>
               {this.props.currentUser ?

@@ -39,53 +39,63 @@ h3 {
 }
 .all-post-details {
   margin: 2% 10%;
-  background-color: lightgoldenrodyellow;
+  /* background-color: lightgoldenrodyellow; */
   display: grid;
-  grid-template-columns: 30% 20% 20% 30%;
-  grid-template-rows: 10% 30% 30% 20% 10%;
-  max-height: 350px;
+  grid-template-columns: 5% 30% 20% 20% 20% 5%;
+  grid-template-rows: 10% 15% 30% 1% 26% 10% 10%;
+  max-height: 365px;
+  box-shadow: 5px 5px 10px 10px lightgray;
 }
 
 .postTitle{
-  background-color: red;
-  grid-column: 2 / span 2;
+  /* background-color: red; */
+  grid-column: 3 / span 2;
+  grid-row: 2;
   place-self: center;
+  text-decoration-line: underline;
 }
+
 .postImg{
-  border-color: blue;
-  grid-column: 1 / span 1;
+  grid-column: 2 / span 1;
+  grid-row: 2;
+  border-radius: 4%;
 }
 .postDescription{
-  background-color:pink;
-  grid-column: 2 / span 3;
-  grid-row: 2 / span 3;
+  /* background-color:pink; */
+  grid-column: 3 / span 3;
+  grid-row: 3 / span 3;
+  font-size: 28px;
+}
+.postTags{
+  /* background-color: yellow; */
+  grid-column: 3 / span 3;
+  grid-row: 5 / span 1;
+  display: flex;
+}
+
+.postTags p, .postTagSingle{
+  padding: 10px;
+  margin: 10px;
+  font-size: 24px;
+}
+.postTagSingle{
+  text-shadow: 4px 4px 4px lightpink;
 }
 .postPrice{
   background-color: purple;
-  grid-column: 
 }
 .postQuantity{
   background-color: green;
 }
-.postTags{
-  background-color: yellow;
-  grid-column: 2 / span 3;
-  grid-row: 4 / span 1;
-  display: flex;
-}
-.postTags p{
-  padding: 10px
-}
-
 .editButton{
-  grid-row: 5;
-  grid-column: 2;
+  grid-row: 6;
+  grid-column: 3;
   width: 70%;
   place-self: center;
 }
 .viewButton{
-  grid-row: 5;
-  grid-column: 3;
+  grid-row: 6;
+  grid-column: 4;
   width: 70%;
   place-self: center;
 }

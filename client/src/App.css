@@ -36,6 +36,14 @@ h3 {
 
 .all-post-details {
   margin: 2% 10%;
-  text-align: center;
   background-color: lightgoldenrodyellow;
+  /* display: flex; */
+}
+
+.custom-select {
+  margin: 50px;
+}
+
+.form-group {
+  margin: 0 10%;
 }

@@ -81,7 +81,7 @@ class App extends Component {
     return (
       <div>
         <Header handleLogout={this.handleLogout} currentUser={this.state.currentUser} />
-        <UnauthOnlyRoute path='/register' component={AccountCreate} currentUser={this.state.currentUser} />
+        <UnauthOnlyRoute path='/register' component={AccountCreate} handleRegister={this.handleRegister} currentUser={this.state.currentUser} />
         <UnauthOnlyRoute path='/login' component={AccountAccess} handleLogin={this.handleLogin} currentUser={this.state.currentUser} />
         <Route exact path='/' component={() => <PostView currentUser={this.state.currentUser} />} />
         <PrivateRoute exact path='/posts/:id/view' component={PostIndiv} currentUser={this.state.currentUser} />

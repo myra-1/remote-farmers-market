@@ -42,16 +42,22 @@ class PostIndiv extends Component {
   render() {
     return (
       <>
-        <div>
-          {this.state.postInfo.title} <br />
-          {this.state.postInfo.description} <br />
-          {this.state.postInfo.img_url ? <img src={this.state.postInfo.img_url} width="300" height="300" /> : null} <br />
-          {this.state.postInfo.price} <br />
-          {this.state.postInfo.quantity} <br />
-          {this.state.postInfo.contact_info}<br />
-          {this.state.postInfo.tags.map(tag => (<p>tags:{tag.name}</p>))}
+        <div className="indivPost">
+          <h3 className="indivPostTitle">{this.state.postInfo.title}</h3>
+          {/* {this.state.postInfo.description} */}
+          {/* {this.state.postInfo.img_url ? <img src={this.state.postInfo.img_url} width="300" height="300" /> : null} */}
+          <p className="postPrice">
+            Price: {this.state.postInfo.price}
+          </p>
+          <p className="postQuantity">
+            Quantity per Price: {this.state.postInfo.quantity}
+          </p>
+          <p className="postContact">
+            Contact seller via: {this.state.postInfo.contact_info}
+          </p>
+          {/* {this.state.postInfo.tags.map(tag => (<p>tags:{tag.name}</p>))} */}
+          <Link to={'/'} >Go back</Link>
         </div>
-        <button><Link to={'/'}>Back</Link></button>
       </>
     )
   }

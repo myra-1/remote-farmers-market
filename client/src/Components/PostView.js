@@ -21,7 +21,9 @@ class PostView extends Component {
     const { posts } = this.state
     return (
       <>
-        <Link to={`/posts/new`}>Share a post</Link>
+        <div className="sharePostDiv">
+          <Link to={`/posts/new`} className="sharePostLink">Share a post</Link>
+        </div>
         <div className="all-posts">
           {posts.map(post => (
             <div className="all-post-details" key={post.id}>
@@ -39,7 +41,7 @@ class PostView extends Component {
                 :
                 null
               }
-              <button className="viewButton"><Link to={`/posts/${post.id}/view`}>View Contact Info</Link></button>
+              <button className="viewButton"><Link to={`/posts/${post.id}/view`}>View Purchase Info</Link></button>
             </div>
           ))
           }

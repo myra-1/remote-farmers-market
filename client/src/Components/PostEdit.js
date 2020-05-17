@@ -161,7 +161,7 @@ class PostEdit extends Component {
         <button onClick={() => { this.handlePostDelete(this.state.postInfo.id) }}>Delete</button>
         <br />
         <br />
-        <button><Link to={'/'}>Back</Link></button>
+        <Link to={'/'} className="backLink">Back</Link>
       </>
     )
   }

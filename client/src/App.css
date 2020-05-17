@@ -81,12 +81,6 @@ h3 {
 .postTagSingle{
   text-shadow: 4px 4px 4px lightpink;
 }
-.postPrice{
-  background-color: purple;
-}
-.postQuantity{
-  background-color: green;
-}
 .editButton{
   grid-row: 6;
   grid-column: 3;
@@ -98,4 +92,36 @@ h3 {
   grid-column: 4;
   width: 70%;
   place-self: center;
+}
+.indivPost{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.indivPostTitle{
+  text-decoration-line: underline;
+}
+.postPrice, .postQuantity, .postContact {
+  font-size: 22px;
+}
+
+.sharePostDiv{
+  text-align: right;
+}
+.sharePostLink{
+  padding: 20px
+}
+.nameAndLogout{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.logoutButton{
+  background-color: black;
+  color: white;
+  width: 10%
 }

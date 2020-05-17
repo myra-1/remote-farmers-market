@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { getOnePost, updatePost, destroyPost, getAllTags } from '../Services/api-helper'
+import { createPost, getAllTags } from '../Services/api-helper'
 
 
 
-class PostEdit extends Component {
+class PostCreate extends Component {
   constructor(props) {
     super(props)
 
@@ -17,81 +17,51 @@ class PostEdit extends Component {
         price: '',
         quantity: '',
         contact_info: '',
-        tags: []
+        user_id: this.props.currentUser
       },
       tags: []
     }
   }
 
   async componentDidMount() {
-    let { id } = this.props.match.params;
-    const postInfo = await getOnePost(id);
     let tags = await getAllTags();
-    this.setState({
-      postInfo: {
-        id: postInfo.id,
-        title: postInfo.title,
-        description: postInfo.description,
-        img_url: postInfo.img_url,
-        price: postInfo.price,
-        quantity: postInfo.quantity,
-        contact_info: postInfo.contact_info,
-        tags: postInfo.tags
-      },
-      tags: tags
-    })
+    this.setState({ ...this.state, tags: tags })
   }
 
-  handlePostUpdate = async () => {
-    let postInfo = this.state.postInfo;
-    postInfo.tags = postInfo.tags.map(t => t.id);
-    const updatedPost = await updatePost(
-      this.state.postInfo.id,
-      postInfo)
-    console.log(updatedPost);
-    this.setState({ postInfo: updatedPost })
+  handlePostCreation = async (postInfo) => {
+    await createPost(postInfo)
   }
 
   handleChange = (event) => {
     let { name, value } = event.target;
-    let new_state = { ...this.state }
     if (name === "tags") {
       var options = event.target.options;
-      let tags = [];
       value = [];
       for (var i = 0, l = options.length; i < l; i++) {
         if (options[i].selected) {
-          let val = Number(options[i].value);
-          value.push(val);
-          let tag = this.state.tags.find(t => t.id === val);
-          tags.push(tag);
+          value.push(Number(options[i].value));
         }
       }
-
-      new_state.postInfo[name] = tags;
-
-    } else {
-      new_state.postInfo[name] = value;
     }
-
-
+    let new_state = { ...this.state }
+    console.log(name, value);
+    new_state.postInfo[name] = value;
     this.setState(new_state);
   }
 
-  handlePostDelete = async (id) => {
-    await destroyPost(id)
-    this.props.history.push('/posts');
-  }
+  // handlechange for tag
 
   render() {
     return (
       <>
+
         <form onSubmit={async (event) => {
           event.preventDefault()
-          await this.handlePostUpdate()
+          await this.handlePostCreation(this.state.postInfo)
+          // handlesubmitfortags
           this.props.history.push('/posts');
         }} >
-          <h3>Edit Post</h3>
+          <h3>Create Post</h3>
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -106,7 +76,7 @@ class PostEdit extends Component {
             value={this.state.postInfo.description}
             onChange={this.handleChange}
           />
-          <label htmlFor="img_url">Image URL</label>
+          <label htmlFor="img_url">Image</label>
           <input
             type="text"
             name="img_url"
@@ -135,7 +105,7 @@ class PostEdit extends Component {
             onChange={this.handleChange}
           />
           <label htmlFor="tags">Tags:</label>
-          <select name="tags" multiple onChange={this.handleChange} value={this.state.postInfo.tags.map(t => t.id)}>
+          <select name="tags" multiple onChange={this.handleChange}>
             {this.state.tags.map(t => {
               return <option key={t.id} value={t.id}>{t.name}</option>
             })}
@@ -144,12 +114,10 @@ class PostEdit extends Component {
         </form>
         <br />
         <br />
-        <button onClick={() => { this.handlePostDelete(this.state.postInfo.id) }}>Delete</button>
         <br />
-        <br />
-        <button><Link to={'/posts'}>Back</Link></button>
+        <button><Link to={'/posts'}>Nevermind</Link></button>
       </>
     )
   }
 }
-export default PostEdit
+export default PostCreate

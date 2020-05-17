@@ -18,6 +18,11 @@ export const getAllPosts = async () => {
   return response.data
 }
 
+export const getAllTags = async () => {
+  const response = await api.get('/tags')
+  return response.data
+}
+
 // GET	/posts/:id(.:format)	
 // posts#show
 export const getOnePost = async (id) => {
@@ -35,14 +40,15 @@ export const createPost = async (postInfo) => {
 
 // PATCH/PUT	/posts/:id(.:format)	
 // posts#update
-export const updatePost = async (id, postInfo) => {
-  const response = await api.put(`/posts/${id}`, postInfo)
+export const updatePost = async (id, postInformation) => {
+  console.error(id, postInformation);
+  const response = await api.put(`/posts/${id}`, postInformation)
   return response.data
 }
 
 // DELETE	/posts/:id(.:format)
 // posts#destroy
-export const destoryPost = async (id) => {
+export const destroyPost = async (id) => {
   const response = await api.delete(`/posts/${id}`)
   return response
 }

@@ -25,22 +25,21 @@ class PostView extends Component {
         <div className="all-posts">
           {posts.map(post => (
             <div className="all-post-details" key={post.id}>
-              <h4>{post.title} </h4>
-              {post.img_url ? <img src={post.img_url} width="300" height="300" /> : null}
-              <p>{post.description}</p>
-              <p>{post.price}</p>
-              <p>{post.quantity}</p>
-              <h5>Tags:</h5>{post.tags.map(tag => (
+              <h3 className="postTitle">{post.title} </h3>
+              {/* <p className="postPrice">Price: {post.price}</p>
+              <p className="postQuantity">Quantity: {post.quantity}</p> */}
+              {post.img_url ? <img src={post.img_url} width="300" height="300" className="postImg" /> : null}
+              <p className="postDescription">Description: {post.description}</p>
+              <div className="postTags"><p>Tags: </p>{post.tags.map(tag => (
                 <p>{tag.name}</p>
               ))}
-              <br />
+              </div>
               {this.props.currentUser ?
-                <button><Link to={`/posts/${post.id}/edit`}>Edit this post</Link></button>
+                <button className="editButton"><Link to={`/posts/${post.id}/edit`}>Edit this post</Link></button>
                 :
                 null
               }
-              <button><Link to={`/posts/${post.id}/view`}>View Contact Info</Link></button>
-              <br /> <br />
+              <button className="viewButton"><Link to={`/posts/${post.id}/view`}>View Contact Info</Link></button>
             </div>
           ))
           }

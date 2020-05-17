@@ -34,16 +34,58 @@ h3 {
   text-align: center;
 }
 
+.form-group {
+  margin: 0 10%;
+}
 .all-post-details {
   margin: 2% 10%;
   background-color: lightgoldenrodyellow;
-  /* display: flex; */
+  display: grid;
+  grid-template-columns: 30% 20% 20% 30%;
+  grid-template-rows: 10% 30% 30% 20% 10%;
+  max-height: 350px;
 }
 
-.custom-select {
-  margin: 50px;
+.postTitle{
+  background-color: red;
+  grid-column: 2 / span 2;
+  place-self: center;
+}
+.postImg{
+  border-color: blue;
+  grid-column: 1 / span 1;
+}
+.postDescription{
+  background-color:pink;
+  grid-column: 2 / span 3;
+  grid-row: 2 / span 3;
+}
+.postPrice{
+  background-color: purple;
+  grid-column: 
+}
+.postQuantity{
+  background-color: green;
+}
+.postTags{
+  background-color: yellow;
+  grid-column: 2 / span 3;
+  grid-row: 4 / span 1;
+  display: flex;
+}
+.postTags p{
+  padding: 10px
 }
 
-.form-group {
-  margin: 0 10%;
+.editButton{
+  grid-row: 5;
+  grid-column: 2;
+  width: 70%;
+  place-self: center;
+}
+.viewButton{
+  grid-row: 5;
+  grid-column: 3;
+  width: 70%;
+  place-self: center;
 }

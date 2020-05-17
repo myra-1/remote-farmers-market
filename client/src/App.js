@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import AccountCreate from './Components/AccountCreate'
 import AccountAccess from './Components/AccountAccess'
 import Header from './Components/Header'
-import Main from './Components/Main'
 import PostView from './Components/PostView'
 import PostEdit from './Components/PostEdit'
 import PostIndiv from './Components/PostIndiv'
@@ -17,7 +17,30 @@ import {
   registerUser,
   verifyUser,
   removeToken,
-} from './Services/api-helper'
+} from './Services/api-helper';
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={(props) => (
+    rest.currentUser
+      ? <Component {...props} {...rest} />
+      : <Redirect to={{
+        pathname: '/login',
+        state: { from: props.location }
+      }} />
+  )} />
+)
+
+const UnauthOnlyRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={(props) => {
+    return (
+      !rest.currentUser
+        ? <Component {...props} {...rest} />
+        : <Redirect to={{
+          pathname: '/'
+        }} />
+    )
+  }} />
+)
 
 class App extends Component {
   state = {
@@ -51,23 +74,19 @@ class App extends Component {
       currentUser: null
     })
     removeToken();
-    this.props.history.push('/login');
   }
   // END AUTH 
 
   render() {
     return (
-      <div className="App">
+      <div>
         <Header handleLogout={this.handleLogout} currentUser={this.state.currentUser} />
-        <Route path='/register' render={(props) => (<AccountCreate {...props} handleRegister={this.handleRegister} />)} />
-        <Route path='/login' render={(props) => (<AccountAccess {...props} handleLogin={this.handleLogin} />)} />
-        <Route path='/main'> <Main /> </Route>
-        <Route exact path='/posts' component={PostView} />
-        <Route exact path='/posts/:id/view' component={PostIndiv} />
-        <Route exact path='/posts/:id/edit' component={PostEdit} />
-        {this.state.currentUser &&
-          <Route exact path='/posts/new' render={(props) => (<PostCreate {...props} currentUser={this.state.currentUser.id} />)} />
-        }
+        <UnauthOnlyRoute path='/register' component={AccountCreate} currentUser={this.state.currentUser} />
+        <UnauthOnlyRoute path='/login' component={AccountAccess} handleLogin={this.handleLogin} currentUser={this.state.currentUser} />
+        <Route exact path='/' component={() => <PostView currentUser={this.state.currentUser} />} />
+        <PrivateRoute exact path='/posts/:id/view' component={PostIndiv} currentUser={this.state.currentUser} />
+        <PrivateRoute exact path='/posts/:id/edit' component={PostEdit} currentUser={this.state.currentUser} />
+        <PrivateRoute exact path='/posts/new' component={PostCreate} currentUser={this.state.currentUser} />
       </div>
     )
   }

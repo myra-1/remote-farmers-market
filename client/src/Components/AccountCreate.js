@@ -20,38 +20,35 @@ class AccountCreate extends Component {
       <form onSubmit={(e) => {
         e.preventDefault();
         this.props.handleRegister(this.state);
-        this.props.history.push('/main');
-      }}>
+      }} class="px-4 py-3">
         <h3>Register</h3>
-        <label htmlFor="display_name">Name:</label>
-        <input
-          id="display_name"
-          type="text"
-          name="display_name"
-          value={display_name}
-          onChange={this.handleChange}
-        />
-        <br />
-        <label htmlFor="email">Email:</label>
-        <input
-          id="email"
-          type="text"
-          name="email"
-          value={email}
-          onChange={this.handleChange}
-        />
-        <br />
-        <label htmlFor="password">Password:</label>
-        <input
-          id="password"
-          type="password"
-          name="password"
-          value={password}
-          onChange={this.handleChange}
-        />
-        <br />
-        <button>Submit</button>
-      </form>
+        <div class="form-group">
+          <label htmlFor="DisplayName">Name</label>
+          <input type="name" class="form-control" id="DisplayName" placeholder="John Smith"
+            type="text"
+            name="display_name"
+            value={display_name}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div class="form-group">
+          <label htmlFor="FormEmail">Email</label>
+          <input type="email" class="form-control" id="FormEmail" placeholder="email@example.com"
+            name="email"
+            value={email}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div class="form-group">
+          <label htmlFor="FormPassword">Password</label>
+          <input type="password" class="form-control" id="FormPassword" placeholder="Password"
+            name="password"
+            value={password}
+            onChange={this.handleChange}
+          />
+        </div>
+        <button type="submit" class="btn btn-info">Submit</button>
+      </form >
     )
   }
 }

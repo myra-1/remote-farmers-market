@@ -80,7 +80,7 @@ class PostEdit extends Component {
 
   handlePostDelete = async (id) => {
     await destroyPost(id)
-    this.props.history.push('/posts');
+    this.props.history.push('/');
   }
 
   render() {
@@ -89,7 +89,7 @@ class PostEdit extends Component {
         <form onSubmit={async (event) => {
           event.preventDefault()
           await this.handlePostUpdate()
-          this.props.history.push('/posts');
+          this.props.history.push('/');
         }} >
           <h3>Edit Post</h3>
           <label htmlFor="title">Title</label>
@@ -147,7 +147,7 @@ class PostEdit extends Component {
         <button onClick={() => { this.handlePostDelete(this.state.postInfo.id) }}>Delete</button>
         <br />
         <br />
-        <button><Link to={'/posts'}>Back</Link></button>
+        <button><Link to={'/'}>Back</Link></button>
       </>
     )
   }

@@ -14,33 +14,31 @@ class AccountAccess extends Component {
   }
 
   render() {
+    console.log(this.props);
     const { email, password } = this.state;
     return (
       <form onSubmit={(e) => {
         e.preventDefault();
         this.props.handleLogin(this.state);
-        this.props.history.push('/main');
-      }}>
+      }} class="px-4 py-3">
         <h3>Login</h3>
-        <label htmlFor="email">email:</label>
-        <input
-          id="email"
-          type="text"
-          name="email"
-          value={email}
-          onChange={this.handleChange}
-        />
-        <br />
-        <label htmlFor="password">password:</label>
-        <input
-          id="password"
-          type="password"
-          name="password"
-          value={password}
-          onChange={this.handleChange}
-        />
-        <br />
-        <button>Submit</button>
+        <div class="form-group">
+          <label htmlFor="FormEmail">Email</label>
+          <input type="email" class="form-control" id="FormEmail" placeholder="email@example.com"
+            name="email"
+            value={email}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div class="form-group">
+          <label htmlFor="FormPassword">Password</label>
+          <input type="password" class="form-control" id="FormPassword" placeholder="Password"
+            name="password"
+            value={password}
+            onChange={this.handleChange}
+          />
+        </div>
+        <button type="submit" class="btn btn-info">Submit</button>
       </form>
 
     )

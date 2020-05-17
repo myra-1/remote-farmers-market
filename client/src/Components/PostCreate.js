@@ -29,7 +29,9 @@ class PostCreate extends Component {
   }
 
   handlePostCreation = async (postInfo) => {
-    await createPost(postInfo)
+    let post = postInfo;
+    delete post.user_id;
+    await createPost(post)
   }
 
   handleChange = (event) => {
@@ -59,7 +61,7 @@ class PostCreate extends Component {
           event.preventDefault()
           await this.handlePostCreation(this.state.postInfo)
           // handlesubmitfortags
-          this.props.history.push('/posts');
+          this.props.history.push('/');
         }} >
           <h3>Create Post</h3>
           <label htmlFor="title">Title</label>

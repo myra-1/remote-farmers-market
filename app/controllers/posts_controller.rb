@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :update, :destroy, :add_tag]
-  # before_action :authorize_request, only: [:create, :update, :destroy]
+  before_action :authorize_request, only: [:create, :update, :destroy]
   #  ^^ UNCOMMENT AND KEEP THIS
   
   # GET /posts
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   
   #POST /posts
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.merge(user: @current_user))
 
     if params.has_key?(:tags)
       @post.tags.clear

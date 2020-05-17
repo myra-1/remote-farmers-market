@@ -20,9 +20,9 @@ class PostView extends Component {
   render() {
     const { posts } = this.state
     return (
-      <div>
+      <div className="all-posts">
         {posts.map(post => (
-          <div key={post.id}>
+          <div className="all-post-details" key={post.id}>
             {post.title} <br />
             {post.description} <br />
             {post.img_url ? <img src={post.img_url} width="300" height="300" /> : null}<br />
@@ -33,7 +33,11 @@ class PostView extends Component {
               <p>tags:{tag.name}</p>
             ))}
             <br />
-            <button><Link to={`/posts/${post.id}/edit`}>Edit this post</Link></button>
+            {this.props.currentUser ?
+              <button><Link to={`/posts/${post.id}/edit`}>Edit this post</Link></button>
+              :
+              null
+            }
             <button><Link to={`/posts/${post.id}/view`}>See this post</Link></button>
             <br /> <br />
           </div>

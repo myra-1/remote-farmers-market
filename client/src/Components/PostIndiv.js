@@ -51,7 +51,7 @@ class PostIndiv extends Component {
           {this.state.postInfo.contact_info}<br />
           {this.state.postInfo.tags.map(tag => (<p>tags:{tag.name}</p>))}
         </div>
-        <button><Link to={'/posts'}>Back</Link></button>
+        <button><Link to={'/'}>Back</Link></button>
       </>
     )
   }

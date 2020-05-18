@@ -143,3 +143,75 @@ h3 {
 .logoutButton{
   width: 10%;
 }
+
+footer {
+  /* position: fixed; bottom: 0px; left: 0px; right: 0px; */
+  text-align:center;
+}
+
+@media only screen and (max-width: 415px){
+  header{
+    max-height: 200px;
+  }
+  header h1{
+    font-size: 18px;
+  }
+  .all-posts, .all-post-details {
+    display:unset;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    margin: 10px;
+  }
+  .postImg {
+    height: 150px;
+    width: 150px;
+  }
+
+  .postTitle, {
+    font-size: 18px
+  }
+  
+  .postDescription, .postTags, .postTags p, .postTagSingle{
+    font-size: 16px;
+    display: none;
+  }
+.px-4, .py-3{
+  margin: 0;
+}
+}
+@media only screen and (max-width: 800px) and (min-width: 416px){
+  header{
+    max-height: 200px;
+  }
+  header h1{
+    font-size: 22px;
+  }
+  .all-posts, .all-post-details {
+    display:unset;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    margin: 5% 20%;
+  }
+  .postImg {
+    height: 150px;
+    width: 150px;
+  }
+
+  .postTitle, {
+    font-size: 18px
+  }
+  
+  .postDescription, .postTags, .postTags p, .postTagSingle{
+    font-size: 16px;
+    display: none;
+  }
+.px-4, .py-3{
+  margin: 0;
+}
+}

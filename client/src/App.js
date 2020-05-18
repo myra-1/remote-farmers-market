@@ -11,6 +11,7 @@ import PostView from './Components/PostView'
 import PostEdit from './Components/PostEdit'
 import PostIndiv from './Components/PostIndiv'
 import PostCreate from './Components/PostCreate'
+import Footer from './Components/Footer'
 
 import {
   loginUser,
@@ -50,7 +51,6 @@ class App extends Component {
 
   async componentDidMount() {
     await this.confirmUser();
-    debugger;
   }
 
   //  AUTH BELOW

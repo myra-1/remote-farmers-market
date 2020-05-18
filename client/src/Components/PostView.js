@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { getAllPosts } from '../Services/api-helper'
+import Footer from './Footer'
 
 class PostView extends Component {
   constructor(props) {
@@ -39,16 +40,17 @@ class PostView extends Component {
               ))}
               </div>
               {this.props.currentUser && this.props.currentUser.id === post.user_id ?
-                <button className="editButton btn btn-light"><Link to={`/posts/${post.id}/edit`}>Edit</Link></button>
+                <button type="button" className="editButton btn btn-light"><Link to={`/posts/${post.id}/edit`}>Edit</Link></button>
                 :
                 null
               }
-              <button className="viewButton btn btn-light"><Link to={`/posts/${post.id}/view`}>Purchase Info</Link></button>
+              <button type="button" className="viewButton btn btn-light"><Link to={`/posts/${post.id}/view`}>Purchase Info</Link></button>
             </div>
           ))
           }
 
         </div>
+        <Footer />
       </>
     )
   }

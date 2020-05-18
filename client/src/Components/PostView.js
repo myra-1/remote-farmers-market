@@ -22,7 +22,9 @@ class PostView extends Component {
     return (
       <>
         <div className="sharePostDiv">
-          <Link to={`/posts/new`} className="sharePostLink">Share a post</Link>
+          <button class="btn btn-light">
+            <Link to={`/posts/new`} className="sharePostLink">Share a post</Link>
+          </button>
         </div>
         <div className="all-posts">
           {posts.map(post => (
@@ -36,12 +38,12 @@ class PostView extends Component {
                 <p className="postTagSingle">{tag.name}</p>
               ))}
               </div>
-              {this.props.currentUser ?
-                <button className="editButton"><Link to={`/posts/${post.id}/edit`}>Edit this post</Link></button>
+              {this.props.currentUser && this.props.currentUser.id === post.user_id ?
+                <button className="editButton btn btn-light"><Link to={`/posts/${post.id}/edit`}>Edit</Link></button>
                 :
                 null
               }
-              <button className="viewButton"><Link to={`/posts/${post.id}/view`}>View Purchase Info</Link></button>
+              <button className="viewButton btn btn-light"><Link to={`/posts/${post.id}/view`}>Purchase Info</Link></button>
             </div>
           ))
           }

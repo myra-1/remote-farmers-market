@@ -125,12 +125,14 @@ class PostCreate extends Component {
             </select>
             <small id="tagHelp" class="form-text text-muted">Select all that apply</small>
           </div>
-          <button class="form-group">Save</button>
+          <button class="form-group btn btn-primary">Save</button>
         </form>
         <br />
+        <div className="backButtonDiv">
+          <button class="btn btn-light"><Link to={'/'}>Nevermind</Link></button>
+        </div>
         <br />
         <br />
-        <button><Link to={'/'}>Nevermind</Link></button>
       </>
     )
   }

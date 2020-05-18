@@ -87,7 +87,7 @@ class PostEdit extends Component {
     return (
       <>
         <div className="deleteButtonDiv">
-          <button className="deleteButton" onClick={() => { this.handlePostDelete(this.state.postInfo.id) }}>Delete</button>
+          <button className="deleteButton btn btn-secondary" onClick={() => { this.handlePostDelete(this.state.postInfo.id) }}>Delete</button>
         </div>
         <h3>Edit Post</h3>
         <form onSubmit={async (event) => {
@@ -158,12 +158,15 @@ class PostEdit extends Component {
             </select>
             <small id="tagHelp" class="form-text text-muted">Select all that apply</small>
           </div>
-          <button class="form-group">Save</button>
+          <button class="form-group btn btn-primary">Save</button>
         </form >
-        <div>
-          <button>
+        <div className="backButtonDiv">
+          <button class="btn btn-light">
             <Link to={'/'} className="backLink">Back</Link>
           </button>
+          <br />
+          <br />
+          <br />
         </div>
       </>
     )

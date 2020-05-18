@@ -48,8 +48,9 @@ class App extends Component {
     post: []
   }
 
-  componentDidMount() {
-    this.confirmUser();
+  async componentDidMount() {
+    await this.confirmUser();
+    debugger;
   }
 
   //  AUTH BELOW

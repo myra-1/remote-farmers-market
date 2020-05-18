@@ -53,7 +53,9 @@ class PostIndiv extends Component {
           <p className="postContact">
             Contact seller via: {this.state.postInfo.contact_info}
           </p>
-          <Link to={'/'} >Go back</Link>
+          <button class="btn btn-light">
+            <Link to={'/'} >Back</Link>
+          </button>
         </div>
       </>
     )

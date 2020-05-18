@@ -11,7 +11,7 @@ function Header(props) {
           <>
             <div className="nameAndLogout">
               <p>Hello {props.currentUser.display_name}</p>
-              <button className="logoutButton" onClick={props.handleLogout}>Logout</button>
+              <button className="logoutButton btn btn-dark" onClick={props.handleLogout}>Logout</button>
             </div>
           </>
           :

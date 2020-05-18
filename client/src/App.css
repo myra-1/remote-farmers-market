@@ -81,17 +81,21 @@ h3 {
 .postTagSingle{
   text-shadow: 4px 4px 4px lightpink;
 }
-.editButton{
+.viewButton{
   grid-row: 6;
   grid-column: 3;
   width: 70%;
   place-self: center;
+  background-color: white;
+  border: 1px solid lightgray;
 }
-.viewButton{
+.editButton{
   grid-row: 6;
   grid-column: 4;
   width: 70%;
   place-self: center;
+  background-color: white;
+  border: 1px solid lightgray;
 }
 .indivPost{
   display: flex;
@@ -109,11 +113,24 @@ h3 {
 .sharePostDiv, .deleteButtonDiv{
   text-align: right;
 }
-.sharePostLink,{
-  padding: 20px
+.backButtonDiv{
+  text-align:center;
+}
+.sharePostLink {
+  padding: 20px;
 }
 .deleteButton{
-  margin: 10px;
+  margin: 15px;
+  margin-right: 30px;
+  background-color: black;
+  color:white;
+}
+.backButton, .backButtonLink{
+  margin: 15px;
+  margin-right: 30px;
+  background-color: black;
+  color:white;
+  text-decoration: none;
 }
 .nameAndLogout{
   display: flex;
@@ -124,7 +141,5 @@ h3 {
   padding: 0;
 }
 .logoutButton{
-  background-color: black;
-  color: white;
-  width: 10%
+  width: 10%;
 }

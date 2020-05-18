@@ -182,7 +182,7 @@ footer {
   margin: 0;
 }
 }
-@media only screen and (max-width: 800px) and (min-width: 416px){
+@media only screen and (max-width: 1200px) and (min-width: 416px){
   header{
     max-height: 200px;
   }

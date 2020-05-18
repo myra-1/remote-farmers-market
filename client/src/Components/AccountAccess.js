@@ -14,7 +14,6 @@ class AccountAccess extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { email, password } = this.state;
     return (
       <form onSubmit={(e) => {

@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :update, :destroy, :add_tag]
   before_action :authorize_request, only: [:create, :update, :destroy]
-  #  ^^ UNCOMMENT AND KEEP THIS
   
   # GET /posts
   def index
@@ -11,8 +10,6 @@ class PostsController < ApplicationController
   
   # GET /posts/1
   def show
-    # @post = Post.find(params[:id])
-    # ^ DELETE THIS - made unnecessary bc of the find_post before_action
     render json: @post, include: :tags
   end
 
@@ -41,8 +38,6 @@ class PostsController < ApplicationController
   
   #PUT /posts/1
   def update
-    # @post = Post.find(params[:id])
-    # ^ DELETE THIS - made unnecessary bc of the find_post before_action
     if params.has_key?(:tags)
       @post.tags.clear
       params[:tags].each do |t|
@@ -59,16 +54,8 @@ class PostsController < ApplicationController
   
   #DELETE /posts/1
   def destroy
-    # @post = Post.find(params[:id])
-    # ^ DELETE THIS - made unnecessary bc of the find_post before_action
     @post.destroy
   end
-
-  # def add_tag
-  #   @tag = Tag.find(params[:tag_id])
-  #   @post.tag << @tag
-  #   render json: @post, include: :tags
-  # end
   
   private
 

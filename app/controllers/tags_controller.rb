@@ -11,12 +11,6 @@ class TagsController < ApplicationController
     # for a particular tag this feels more important in show than in index
   end
 
-  # def create
-  #   @post = Post.find(params[:post_id])
-  #   @tag = @tags.create(tag_params)
-  #   render json: @tag
-  # end
-
   def create
     @tag = Tag.new(tag_params)
     if @tag.save

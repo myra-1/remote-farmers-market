@@ -31,8 +31,6 @@ class PostView extends Component {
           {posts.map(post => (
             <div className="all-post-details" key={post.id}>
               <h3 className="postTitle">{post.title} </h3>
-              {/* <p className="postPrice">Price: {post.price}</p>
-              <p className="postQuantity">Quantity: {post.quantity}</p> */}
               {post.img_url ? <img src={post.img_url} width="300" height="300" className="postImg" /> : null}
               <p className="postDescription">{post.description}</p>
               <div className="postTags">{post.tags.map(tag => (

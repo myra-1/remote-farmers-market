@@ -46,7 +46,6 @@ class PostCreate extends Component {
       }
     }
     let new_state = { ...this.state }
-    console.log(name, value);
     new_state.postInfo[name] = value;
     this.setState(new_state);
   }

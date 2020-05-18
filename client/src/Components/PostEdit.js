@@ -48,7 +48,6 @@ class PostEdit extends Component {
     const updatedPost = await updatePost(
       this.state.postInfo.id,
       postInfo)
-    console.log(updatedPost);
     this.setState({ postInfo: updatedPost })
   }
 

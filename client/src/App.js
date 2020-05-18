@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Link, Redirect } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import AccountCreate from './Components/AccountCreate'
 import AccountAccess from './Components/AccountAccess'
@@ -11,7 +11,6 @@ import PostView from './Components/PostView'
 import PostEdit from './Components/PostEdit'
 import PostIndiv from './Components/PostIndiv'
 import PostCreate from './Components/PostCreate'
-import Footer from './Components/Footer'
 
 import {
   loginUser,
@@ -50,7 +49,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    await this.confirmUser();
+    await this.confirmUser()
   }
 
   //  AUTH BELOW
@@ -74,7 +73,7 @@ class App extends Component {
     this.setState({
       currentUser: null
     })
-    removeToken();
+    removeToken()
   }
   // END AUTH 
 

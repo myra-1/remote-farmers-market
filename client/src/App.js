@@ -4,6 +4,7 @@ import { withRouter } from 'react-router'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+
 import AccountCreate from './Components/AccountCreate'
 import AccountAccess from './Components/AccountAccess'
 import Header from './Components/Header'
@@ -18,6 +19,9 @@ import {
   verifyUser,
   removeToken,
 } from './Services/api-helper';
+
+import Refreshplz from "@refreshplz/refreshplz";
+Refreshplz.init("K3RIuk71TELs");
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
